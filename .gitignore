@@ -1,25 +1,20 @@
 
-# Dependencies
+# Node / TypeScript
 node_modules/
+dist/
+build/
+coverage/
+
+# Env
+.env
+.env.*
+!.env.example
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-logs/
-*.log
 
-# Build outputs
-dist/
-build/
-out/
-.next/
-
-# Env
-.env
-.env.*
-
-# OS / Editor
+# OS
 .DS_Store
-.vscode/
