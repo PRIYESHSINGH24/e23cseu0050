@@ -3,6 +3,7 @@ import express from "express";
 import {
   fetchVehicles,
   fetchVehicleById,
+  fetchUpcomingMaintenance,
   addVehicle,
   editVehicle,
   removeVehicle,
@@ -11,6 +12,8 @@ import {
 const router = express.Router();
 
 router.get("/", fetchVehicles);
+
+router.get("/maintenance/upcoming", fetchUpcomingMaintenance);
 
 router.get("/:id", fetchVehicleById);
 

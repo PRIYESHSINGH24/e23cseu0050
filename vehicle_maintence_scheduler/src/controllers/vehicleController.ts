@@ -8,6 +8,7 @@ import {
   createVehicle,
   updateVehicle,
   deleteVehicle,
+  getUpcomingMaintenance,
 } from "../services/vehicleService";
 
 
@@ -138,4 +139,23 @@ export const removeVehicle = async (
   res.json({
     message: "Vehicle deleted",
   });
+};
+
+export const fetchUpcomingMaintenance = async (
+  req: Request,
+  res: Response
+) => {
+  const daysRaw = req.query.days;
+  const days = typeof daysRaw === "string" ? Number(daysRaw) : 30;
+  const daysAhead = Number.isFinite(days) && days > 0 ? days : 30;
+
+  await Log(
+    "backend",
+    "info",
+    "controller",
+    `Fetching upcoming maintenance (next ${daysAhead} days)`
+  );
+
+  const upcoming = getUpcomingMaintenance(daysAhead);
+  res.json(upcoming);
 };
